@@ -36,7 +36,7 @@ func buildWeatherStationNameList() ([]string, error) {
 		if strings.Contains(line, "#") {
 			continue
 		}
-		name := strings.Split(line, ";")[0]
+		name, _, _ := strings.Cut(line, ";")
 		stationSet[name] = struct{}{}
 	}
 	if err := scanner.Err(); err != nil {

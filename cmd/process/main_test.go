@@ -55,7 +55,7 @@ func TestAggregationIsIndependentOfWorkerCount(t *testing.T) {
 	stations := []string{"Alpha", "Bravo", "Charlie", "Delta"}
 	temperatures := []string{"-9.9", "0.0", "12.3", "99.9", "-1.2"}
 	var data strings.Builder
-	for i := 0; i < 1000; i++ {
+	for i := range 1000 {
 		fmt.Fprintf(&data, "%s;%s\n", stations[i%len(stations)], temperatures[i%len(temperatures)])
 	}
 	file := writeMeasurementsFile(t, data.String())

@@ -44,7 +44,7 @@ func splitFileIntoChunks(file *os.File, count int) ([]io.Reader, error) {
 	}
 
 	chunks := make([]io.Reader, 0, count)
-	for i := 0; i < count; i++ {
+	for i := range count {
 		start, end := boundaries[i], boundaries[i+1]
 		if end > start {
 			chunks = append(chunks, io.NewSectionReader(file, start, end-start))
